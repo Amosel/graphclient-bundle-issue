@@ -6,14 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build-client": "graphclient build"
   },
   "dependencies": {
+    "@graphprotocol/graph-cli": "^0.33.1",
+    "@graphprotocol/graph-ts": "^0.27.0",
+    "@next/bundle-analyzer": "^12.3.0",
+    "graphql": "^16.6.0",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@graphprotocol/client-cli": "^2.2.9",
+    "@types/react": "18.0.19",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.0"
   }

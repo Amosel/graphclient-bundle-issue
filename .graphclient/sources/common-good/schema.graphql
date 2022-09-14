@@ -1,0 +1,3601 @@
+schema {
+  query: Query
+  subscription: Subscription
+}
+
+"Marks the GraphQL type as indexable entity.  Each type that should be an entity is required to be annotated with this directive."
+directive @entity on OBJECT
+
+"Defined a Subgraph ID for an object type"
+directive @subgraphId(id: String!) on OBJECT
+
+"creates a virtual field on the entity that may be queried but cannot be set manually through the mappings API."
+directive @derivedFrom(field: String!) on FIELD_DEFINITION
+
+type AnnouncementEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  CID: Bytes!
+  message: String!
+  by: EoaRecord!
+}
+
+input AnnouncementEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  CID: Bytes
+  CID_not: Bytes
+  CID_in: [Bytes!]
+  CID_not_in: [Bytes!]
+  CID_contains: Bytes
+  CID_not_contains: Bytes
+  message: String
+  message_not: String
+  message_gt: String
+  message_lt: String
+  message_gte: String
+  message_lte: String
+  message_in: [String!]
+  message_not_in: [String!]
+  message_contains: String
+  message_contains_nocase: String
+  message_not_contains: String
+  message_not_contains_nocase: String
+  message_starts_with: String
+  message_starts_with_nocase: String
+  message_not_starts_with: String
+  message_not_starts_with_nocase: String
+  message_ends_with: String
+  message_ends_with_nocase: String
+  message_not_ends_with: String
+  message_not_ends_with_nocase: String
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum AnnouncementEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  CID
+  message
+  by
+}
+
+scalar BigDecimal
+
+scalar BigInt
+
+input BlockChangedFilter {
+  number_gte: Int!
+}
+
+input Block_height {
+  hash: Bytes
+  number: Int
+  number_gte: Int
+}
+
+scalar Bytes
+
+type CommonGoodCreatedEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  factory: FactoryRecord!
+  commonGood: CommonGoodRecord!
+  CID: Bytes!
+  contents: String!
+  by: EoaRecord!
+}
+
+input CommonGoodCreatedEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  factory: String
+  factory_not: String
+  factory_gt: String
+  factory_lt: String
+  factory_gte: String
+  factory_lte: String
+  factory_in: [String!]
+  factory_not_in: [String!]
+  factory_contains: String
+  factory_contains_nocase: String
+  factory_not_contains: String
+  factory_not_contains_nocase: String
+  factory_starts_with: String
+  factory_starts_with_nocase: String
+  factory_not_starts_with: String
+  factory_not_starts_with_nocase: String
+  factory_ends_with: String
+  factory_ends_with_nocase: String
+  factory_not_ends_with: String
+  factory_not_ends_with_nocase: String
+  factory_: FactoryRecord_filter
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  CID: Bytes
+  CID_not: Bytes
+  CID_in: [Bytes!]
+  CID_not_in: [Bytes!]
+  CID_contains: Bytes
+  CID_not_contains: Bytes
+  contents: String
+  contents_not: String
+  contents_gt: String
+  contents_lt: String
+  contents_gte: String
+  contents_lte: String
+  contents_in: [String!]
+  contents_not_in: [String!]
+  contents_contains: String
+  contents_contains_nocase: String
+  contents_not_contains: String
+  contents_not_contains_nocase: String
+  contents_starts_with: String
+  contents_starts_with_nocase: String
+  contents_not_starts_with: String
+  contents_not_starts_with_nocase: String
+  contents_ends_with: String
+  contents_ends_with_nocase: String
+  contents_not_ends_with: String
+  contents_not_ends_with_nocase: String
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum CommonGoodCreatedEvent_orderBy {
+  id
+  txHash
+  timestamp
+  factory
+  commonGood
+  CID
+  contents
+  by
+}
+
+type CommonGoodEventRecord {
+  id: ID!
+  commonGood: CommonGoodRecord!
+  txHash: Bytes!
+  timestamp: BigInt!
+  created: CommonGoodCreatedEvent
+  pledged: PledgeEvent
+  withdrew: PledgeWithdrawnEvent
+  next: NextMilestoneStartedEvent
+  succeeded: ProjectSucceededFundraisingEvent
+  failed: ProjectFailedFundraisingEvent
+  claimed: FundsClaimedEvent
+  announcement: AnnouncementEvent
+  metadata: MetadataUpdatedEvent
+}
+
+input CommonGoodEventRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  created: String
+  created_not: String
+  created_gt: String
+  created_lt: String
+  created_gte: String
+  created_lte: String
+  created_in: [String!]
+  created_not_in: [String!]
+  created_contains: String
+  created_contains_nocase: String
+  created_not_contains: String
+  created_not_contains_nocase: String
+  created_starts_with: String
+  created_starts_with_nocase: String
+  created_not_starts_with: String
+  created_not_starts_with_nocase: String
+  created_ends_with: String
+  created_ends_with_nocase: String
+  created_not_ends_with: String
+  created_not_ends_with_nocase: String
+  created_: CommonGoodCreatedEvent_filter
+  pledged: String
+  pledged_not: String
+  pledged_gt: String
+  pledged_lt: String
+  pledged_gte: String
+  pledged_lte: String
+  pledged_in: [String!]
+  pledged_not_in: [String!]
+  pledged_contains: String
+  pledged_contains_nocase: String
+  pledged_not_contains: String
+  pledged_not_contains_nocase: String
+  pledged_starts_with: String
+  pledged_starts_with_nocase: String
+  pledged_not_starts_with: String
+  pledged_not_starts_with_nocase: String
+  pledged_ends_with: String
+  pledged_ends_with_nocase: String
+  pledged_not_ends_with: String
+  pledged_not_ends_with_nocase: String
+  pledged_: PledgeEvent_filter
+  withdrew: String
+  withdrew_not: String
+  withdrew_gt: String
+  withdrew_lt: String
+  withdrew_gte: String
+  withdrew_lte: String
+  withdrew_in: [String!]
+  withdrew_not_in: [String!]
+  withdrew_contains: String
+  withdrew_contains_nocase: String
+  withdrew_not_contains: String
+  withdrew_not_contains_nocase: String
+  withdrew_starts_with: String
+  withdrew_starts_with_nocase: String
+  withdrew_not_starts_with: String
+  withdrew_not_starts_with_nocase: String
+  withdrew_ends_with: String
+  withdrew_ends_with_nocase: String
+  withdrew_not_ends_with: String
+  withdrew_not_ends_with_nocase: String
+  withdrew_: PledgeWithdrawnEvent_filter
+  next: String
+  next_not: String
+  next_gt: String
+  next_lt: String
+  next_gte: String
+  next_lte: String
+  next_in: [String!]
+  next_not_in: [String!]
+  next_contains: String
+  next_contains_nocase: String
+  next_not_contains: String
+  next_not_contains_nocase: String
+  next_starts_with: String
+  next_starts_with_nocase: String
+  next_not_starts_with: String
+  next_not_starts_with_nocase: String
+  next_ends_with: String
+  next_ends_with_nocase: String
+  next_not_ends_with: String
+  next_not_ends_with_nocase: String
+  next_: NextMilestoneStartedEvent_filter
+  succeeded: String
+  succeeded_not: String
+  succeeded_gt: String
+  succeeded_lt: String
+  succeeded_gte: String
+  succeeded_lte: String
+  succeeded_in: [String!]
+  succeeded_not_in: [String!]
+  succeeded_contains: String
+  succeeded_contains_nocase: String
+  succeeded_not_contains: String
+  succeeded_not_contains_nocase: String
+  succeeded_starts_with: String
+  succeeded_starts_with_nocase: String
+  succeeded_not_starts_with: String
+  succeeded_not_starts_with_nocase: String
+  succeeded_ends_with: String
+  succeeded_ends_with_nocase: String
+  succeeded_not_ends_with: String
+  succeeded_not_ends_with_nocase: String
+  succeeded_: ProjectSucceededFundraisingEvent_filter
+  failed: String
+  failed_not: String
+  failed_gt: String
+  failed_lt: String
+  failed_gte: String
+  failed_lte: String
+  failed_in: [String!]
+  failed_not_in: [String!]
+  failed_contains: String
+  failed_contains_nocase: String
+  failed_not_contains: String
+  failed_not_contains_nocase: String
+  failed_starts_with: String
+  failed_starts_with_nocase: String
+  failed_not_starts_with: String
+  failed_not_starts_with_nocase: String
+  failed_ends_with: String
+  failed_ends_with_nocase: String
+  failed_not_ends_with: String
+  failed_not_ends_with_nocase: String
+  failed_: ProjectFailedFundraisingEvent_filter
+  claimed: String
+  claimed_not: String
+  claimed_gt: String
+  claimed_lt: String
+  claimed_gte: String
+  claimed_lte: String
+  claimed_in: [String!]
+  claimed_not_in: [String!]
+  claimed_contains: String
+  claimed_contains_nocase: String
+  claimed_not_contains: String
+  claimed_not_contains_nocase: String
+  claimed_starts_with: String
+  claimed_starts_with_nocase: String
+  claimed_not_starts_with: String
+  claimed_not_starts_with_nocase: String
+  claimed_ends_with: String
+  claimed_ends_with_nocase: String
+  claimed_not_ends_with: String
+  claimed_not_ends_with_nocase: String
+  claimed_: FundsClaimedEvent_filter
+  announcement: String
+  announcement_not: String
+  announcement_gt: String
+  announcement_lt: String
+  announcement_gte: String
+  announcement_lte: String
+  announcement_in: [String!]
+  announcement_not_in: [String!]
+  announcement_contains: String
+  announcement_contains_nocase: String
+  announcement_not_contains: String
+  announcement_not_contains_nocase: String
+  announcement_starts_with: String
+  announcement_starts_with_nocase: String
+  announcement_not_starts_with: String
+  announcement_not_starts_with_nocase: String
+  announcement_ends_with: String
+  announcement_ends_with_nocase: String
+  announcement_not_ends_with: String
+  announcement_not_ends_with_nocase: String
+  announcement_: AnnouncementEvent_filter
+  metadata: String
+  metadata_not: String
+  metadata_gt: String
+  metadata_lt: String
+  metadata_gte: String
+  metadata_lte: String
+  metadata_in: [String!]
+  metadata_not_in: [String!]
+  metadata_contains: String
+  metadata_contains_nocase: String
+  metadata_not_contains: String
+  metadata_not_contains_nocase: String
+  metadata_starts_with: String
+  metadata_starts_with_nocase: String
+  metadata_not_starts_with: String
+  metadata_not_starts_with_nocase: String
+  metadata_ends_with: String
+  metadata_ends_with_nocase: String
+  metadata_not_ends_with: String
+  metadata_not_ends_with_nocase: String
+  metadata_: MetadataUpdatedEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum CommonGoodEventRecord_orderBy {
+  id
+  commonGood
+  txHash
+  timestamp
+  created
+  pledged
+  withdrew
+  next
+  succeeded
+  failed
+  claimed
+  announcement
+  metadata
+}
+
+type CommonGoodRecord {
+  id: ID!
+  contractAddress: Bytes!
+  initializerAddress: Bytes!
+  adminAddresses: [Bytes!]!
+  teamAddress: Bytes!
+  metadataCID: Bytes!
+  metadataContents: String!
+  factory: FactoryRecord!
+  createdAt: BigInt!
+  lastUpdateTime: BigInt!
+  state: CommonGoodRecordState!
+  currentMilestoneStartDate: BigInt!
+  lastMilestoneEndDate: BigInt!
+  balance: BigInt!
+  raisedAmount: BigInt!
+  withdrawnAmount: BigInt!
+  claimedAmount: BigInt!
+  milestones(skip: Int = 0, first: Int = 100, orderBy: MilestoneRecord_orderBy, orderDirection: OrderDirection, where: MilestoneRecord_filter): [MilestoneRecord!]!
+  pledges(skip: Int = 0, first: Int = 100, orderBy: PledgeRecord_orderBy, orderDirection: OrderDirection, where: PledgeRecord_filter): [PledgeRecord!]!
+  pledgerCount: Int!
+  withdrawnPledgerCount: Int!
+  createdEvent: CommonGoodCreatedEvent!
+  pledgeWithdrawEvents(skip: Int = 0, first: Int = 100, orderBy: PledgeWithdrawnEvent_orderBy, orderDirection: OrderDirection, where: PledgeWithdrawnEvent_filter): [PledgeWithdrawnEvent!]!
+  pledgeEvents(skip: Int = 0, first: Int = 100, orderBy: PledgeEvent_orderBy, orderDirection: OrderDirection, where: PledgeEvent_filter): [PledgeEvent!]!
+  nextEvents(skip: Int = 0, first: Int = 100, orderBy: NextMilestoneStartedEvent_orderBy, orderDirection: OrderDirection, where: NextMilestoneStartedEvent_filter): [NextMilestoneStartedEvent!]!
+  succeeded: ProjectSucceededFundraisingEvent
+  failed: ProjectFailedFundraisingEvent
+  claimedEvents(skip: Int = 0, first: Int = 100, orderBy: FundsClaimedEvent_orderBy, orderDirection: OrderDirection, where: FundsClaimedEvent_filter): [FundsClaimedEvent!]!
+  events(skip: Int = 0, first: Int = 100, orderBy: CommonGoodEventRecord_orderBy, orderDirection: OrderDirection, where: CommonGoodEventRecord_filter): [CommonGoodEventRecord!]!
+}
+
+enum CommonGoodRecordState {
+  ACTIVE
+  FAILED
+  SUCCEEDED
+}
+
+input CommonGoodRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  contractAddress: Bytes
+  contractAddress_not: Bytes
+  contractAddress_in: [Bytes!]
+  contractAddress_not_in: [Bytes!]
+  contractAddress_contains: Bytes
+  contractAddress_not_contains: Bytes
+  initializerAddress: Bytes
+  initializerAddress_not: Bytes
+  initializerAddress_in: [Bytes!]
+  initializerAddress_not_in: [Bytes!]
+  initializerAddress_contains: Bytes
+  initializerAddress_not_contains: Bytes
+  adminAddresses: [Bytes!]
+  adminAddresses_not: [Bytes!]
+  adminAddresses_contains: [Bytes!]
+  adminAddresses_contains_nocase: [Bytes!]
+  adminAddresses_not_contains: [Bytes!]
+  adminAddresses_not_contains_nocase: [Bytes!]
+  teamAddress: Bytes
+  teamAddress_not: Bytes
+  teamAddress_in: [Bytes!]
+  teamAddress_not_in: [Bytes!]
+  teamAddress_contains: Bytes
+  teamAddress_not_contains: Bytes
+  metadataCID: Bytes
+  metadataCID_not: Bytes
+  metadataCID_in: [Bytes!]
+  metadataCID_not_in: [Bytes!]
+  metadataCID_contains: Bytes
+  metadataCID_not_contains: Bytes
+  metadataContents: String
+  metadataContents_not: String
+  metadataContents_gt: String
+  metadataContents_lt: String
+  metadataContents_gte: String
+  metadataContents_lte: String
+  metadataContents_in: [String!]
+  metadataContents_not_in: [String!]
+  metadataContents_contains: String
+  metadataContents_contains_nocase: String
+  metadataContents_not_contains: String
+  metadataContents_not_contains_nocase: String
+  metadataContents_starts_with: String
+  metadataContents_starts_with_nocase: String
+  metadataContents_not_starts_with: String
+  metadataContents_not_starts_with_nocase: String
+  metadataContents_ends_with: String
+  metadataContents_ends_with_nocase: String
+  metadataContents_not_ends_with: String
+  metadataContents_not_ends_with_nocase: String
+  factory: String
+  factory_not: String
+  factory_gt: String
+  factory_lt: String
+  factory_gte: String
+  factory_lte: String
+  factory_in: [String!]
+  factory_not_in: [String!]
+  factory_contains: String
+  factory_contains_nocase: String
+  factory_not_contains: String
+  factory_not_contains_nocase: String
+  factory_starts_with: String
+  factory_starts_with_nocase: String
+  factory_not_starts_with: String
+  factory_not_starts_with_nocase: String
+  factory_ends_with: String
+  factory_ends_with_nocase: String
+  factory_not_ends_with: String
+  factory_not_ends_with_nocase: String
+  factory_: FactoryRecord_filter
+  createdAt: BigInt
+  createdAt_not: BigInt
+  createdAt_gt: BigInt
+  createdAt_lt: BigInt
+  createdAt_gte: BigInt
+  createdAt_lte: BigInt
+  createdAt_in: [BigInt!]
+  createdAt_not_in: [BigInt!]
+  lastUpdateTime: BigInt
+  lastUpdateTime_not: BigInt
+  lastUpdateTime_gt: BigInt
+  lastUpdateTime_lt: BigInt
+  lastUpdateTime_gte: BigInt
+  lastUpdateTime_lte: BigInt
+  lastUpdateTime_in: [BigInt!]
+  lastUpdateTime_not_in: [BigInt!]
+  state: CommonGoodRecordState
+  state_not: CommonGoodRecordState
+  state_in: [CommonGoodRecordState!]
+  state_not_in: [CommonGoodRecordState!]
+  currentMilestoneStartDate: BigInt
+  currentMilestoneStartDate_not: BigInt
+  currentMilestoneStartDate_gt: BigInt
+  currentMilestoneStartDate_lt: BigInt
+  currentMilestoneStartDate_gte: BigInt
+  currentMilestoneStartDate_lte: BigInt
+  currentMilestoneStartDate_in: [BigInt!]
+  currentMilestoneStartDate_not_in: [BigInt!]
+  lastMilestoneEndDate: BigInt
+  lastMilestoneEndDate_not: BigInt
+  lastMilestoneEndDate_gt: BigInt
+  lastMilestoneEndDate_lt: BigInt
+  lastMilestoneEndDate_gte: BigInt
+  lastMilestoneEndDate_lte: BigInt
+  lastMilestoneEndDate_in: [BigInt!]
+  lastMilestoneEndDate_not_in: [BigInt!]
+  balance: BigInt
+  balance_not: BigInt
+  balance_gt: BigInt
+  balance_lt: BigInt
+  balance_gte: BigInt
+  balance_lte: BigInt
+  balance_in: [BigInt!]
+  balance_not_in: [BigInt!]
+  raisedAmount: BigInt
+  raisedAmount_not: BigInt
+  raisedAmount_gt: BigInt
+  raisedAmount_lt: BigInt
+  raisedAmount_gte: BigInt
+  raisedAmount_lte: BigInt
+  raisedAmount_in: [BigInt!]
+  raisedAmount_not_in: [BigInt!]
+  withdrawnAmount: BigInt
+  withdrawnAmount_not: BigInt
+  withdrawnAmount_gt: BigInt
+  withdrawnAmount_lt: BigInt
+  withdrawnAmount_gte: BigInt
+  withdrawnAmount_lte: BigInt
+  withdrawnAmount_in: [BigInt!]
+  withdrawnAmount_not_in: [BigInt!]
+  claimedAmount: BigInt
+  claimedAmount_not: BigInt
+  claimedAmount_gt: BigInt
+  claimedAmount_lt: BigInt
+  claimedAmount_gte: BigInt
+  claimedAmount_lte: BigInt
+  claimedAmount_in: [BigInt!]
+  claimedAmount_not_in: [BigInt!]
+  milestones_: MilestoneRecord_filter
+  pledges_: PledgeRecord_filter
+  pledgerCount: Int
+  pledgerCount_not: Int
+  pledgerCount_gt: Int
+  pledgerCount_lt: Int
+  pledgerCount_gte: Int
+  pledgerCount_lte: Int
+  pledgerCount_in: [Int!]
+  pledgerCount_not_in: [Int!]
+  withdrawnPledgerCount: Int
+  withdrawnPledgerCount_not: Int
+  withdrawnPledgerCount_gt: Int
+  withdrawnPledgerCount_lt: Int
+  withdrawnPledgerCount_gte: Int
+  withdrawnPledgerCount_lte: Int
+  withdrawnPledgerCount_in: [Int!]
+  withdrawnPledgerCount_not_in: [Int!]
+  createdEvent_: CommonGoodCreatedEvent_filter
+  pledgeWithdrawEvents_: PledgeWithdrawnEvent_filter
+  pledgeEvents_: PledgeEvent_filter
+  nextEvents_: NextMilestoneStartedEvent_filter
+  succeeded: String
+  succeeded_not: String
+  succeeded_gt: String
+  succeeded_lt: String
+  succeeded_gte: String
+  succeeded_lte: String
+  succeeded_in: [String!]
+  succeeded_not_in: [String!]
+  succeeded_contains: String
+  succeeded_contains_nocase: String
+  succeeded_not_contains: String
+  succeeded_not_contains_nocase: String
+  succeeded_starts_with: String
+  succeeded_starts_with_nocase: String
+  succeeded_not_starts_with: String
+  succeeded_not_starts_with_nocase: String
+  succeeded_ends_with: String
+  succeeded_ends_with_nocase: String
+  succeeded_not_ends_with: String
+  succeeded_not_ends_with_nocase: String
+  succeeded_: ProjectSucceededFundraisingEvent_filter
+  failed: String
+  failed_not: String
+  failed_gt: String
+  failed_lt: String
+  failed_gte: String
+  failed_lte: String
+  failed_in: [String!]
+  failed_not_in: [String!]
+  failed_contains: String
+  failed_contains_nocase: String
+  failed_not_contains: String
+  failed_not_contains_nocase: String
+  failed_starts_with: String
+  failed_starts_with_nocase: String
+  failed_not_starts_with: String
+  failed_not_starts_with_nocase: String
+  failed_ends_with: String
+  failed_ends_with_nocase: String
+  failed_not_ends_with: String
+  failed_not_ends_with_nocase: String
+  failed_: ProjectFailedFundraisingEvent_filter
+  claimedEvents_: FundsClaimedEvent_filter
+  events_: CommonGoodEventRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum CommonGoodRecord_orderBy {
+  id
+  contractAddress
+  initializerAddress
+  adminAddresses
+  teamAddress
+  metadataCID
+  metadataContents
+  factory
+  createdAt
+  lastUpdateTime
+  state
+  currentMilestoneStartDate
+  lastMilestoneEndDate
+  balance
+  raisedAmount
+  withdrawnAmount
+  claimedAmount
+  milestones
+  pledges
+  pledgerCount
+  withdrawnPledgerCount
+  createdEvent
+  pledgeWithdrawEvents
+  pledgeEvents
+  nextEvents
+  succeeded
+  failed
+  claimedEvents
+  events
+}
+
+type EoaEventRecord {
+  id: ID!
+  txHash: Bytes!
+  by: EoaRecord!
+  timestamp: BigInt!
+  created: CommonGoodCreatedEvent
+  pledged: PledgeEvent
+  withdrew: PledgeWithdrawnEvent
+  claimed: FundsClaimedEvent
+  teamSucceededFundraising: ProjectSucceededFundraisingEvent
+  teamMissedFundraising: ProjectFailedFundraisingEvent
+  updated: MetadataUpdatedEvent
+  announced: AnnouncementEvent
+}
+
+input EoaEventRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  created: String
+  created_not: String
+  created_gt: String
+  created_lt: String
+  created_gte: String
+  created_lte: String
+  created_in: [String!]
+  created_not_in: [String!]
+  created_contains: String
+  created_contains_nocase: String
+  created_not_contains: String
+  created_not_contains_nocase: String
+  created_starts_with: String
+  created_starts_with_nocase: String
+  created_not_starts_with: String
+  created_not_starts_with_nocase: String
+  created_ends_with: String
+  created_ends_with_nocase: String
+  created_not_ends_with: String
+  created_not_ends_with_nocase: String
+  created_: CommonGoodCreatedEvent_filter
+  pledged: String
+  pledged_not: String
+  pledged_gt: String
+  pledged_lt: String
+  pledged_gte: String
+  pledged_lte: String
+  pledged_in: [String!]
+  pledged_not_in: [String!]
+  pledged_contains: String
+  pledged_contains_nocase: String
+  pledged_not_contains: String
+  pledged_not_contains_nocase: String
+  pledged_starts_with: String
+  pledged_starts_with_nocase: String
+  pledged_not_starts_with: String
+  pledged_not_starts_with_nocase: String
+  pledged_ends_with: String
+  pledged_ends_with_nocase: String
+  pledged_not_ends_with: String
+  pledged_not_ends_with_nocase: String
+  pledged_: PledgeEvent_filter
+  withdrew: String
+  withdrew_not: String
+  withdrew_gt: String
+  withdrew_lt: String
+  withdrew_gte: String
+  withdrew_lte: String
+  withdrew_in: [String!]
+  withdrew_not_in: [String!]
+  withdrew_contains: String
+  withdrew_contains_nocase: String
+  withdrew_not_contains: String
+  withdrew_not_contains_nocase: String
+  withdrew_starts_with: String
+  withdrew_starts_with_nocase: String
+  withdrew_not_starts_with: String
+  withdrew_not_starts_with_nocase: String
+  withdrew_ends_with: String
+  withdrew_ends_with_nocase: String
+  withdrew_not_ends_with: String
+  withdrew_not_ends_with_nocase: String
+  withdrew_: PledgeWithdrawnEvent_filter
+  claimed: String
+  claimed_not: String
+  claimed_gt: String
+  claimed_lt: String
+  claimed_gte: String
+  claimed_lte: String
+  claimed_in: [String!]
+  claimed_not_in: [String!]
+  claimed_contains: String
+  claimed_contains_nocase: String
+  claimed_not_contains: String
+  claimed_not_contains_nocase: String
+  claimed_starts_with: String
+  claimed_starts_with_nocase: String
+  claimed_not_starts_with: String
+  claimed_not_starts_with_nocase: String
+  claimed_ends_with: String
+  claimed_ends_with_nocase: String
+  claimed_not_ends_with: String
+  claimed_not_ends_with_nocase: String
+  claimed_: FundsClaimedEvent_filter
+  teamSucceededFundraising: String
+  teamSucceededFundraising_not: String
+  teamSucceededFundraising_gt: String
+  teamSucceededFundraising_lt: String
+  teamSucceededFundraising_gte: String
+  teamSucceededFundraising_lte: String
+  teamSucceededFundraising_in: [String!]
+  teamSucceededFundraising_not_in: [String!]
+  teamSucceededFundraising_contains: String
+  teamSucceededFundraising_contains_nocase: String
+  teamSucceededFundraising_not_contains: String
+  teamSucceededFundraising_not_contains_nocase: String
+  teamSucceededFundraising_starts_with: String
+  teamSucceededFundraising_starts_with_nocase: String
+  teamSucceededFundraising_not_starts_with: String
+  teamSucceededFundraising_not_starts_with_nocase: String
+  teamSucceededFundraising_ends_with: String
+  teamSucceededFundraising_ends_with_nocase: String
+  teamSucceededFundraising_not_ends_with: String
+  teamSucceededFundraising_not_ends_with_nocase: String
+  teamSucceededFundraising_: ProjectSucceededFundraisingEvent_filter
+  teamMissedFundraising: String
+  teamMissedFundraising_not: String
+  teamMissedFundraising_gt: String
+  teamMissedFundraising_lt: String
+  teamMissedFundraising_gte: String
+  teamMissedFundraising_lte: String
+  teamMissedFundraising_in: [String!]
+  teamMissedFundraising_not_in: [String!]
+  teamMissedFundraising_contains: String
+  teamMissedFundraising_contains_nocase: String
+  teamMissedFundraising_not_contains: String
+  teamMissedFundraising_not_contains_nocase: String
+  teamMissedFundraising_starts_with: String
+  teamMissedFundraising_starts_with_nocase: String
+  teamMissedFundraising_not_starts_with: String
+  teamMissedFundraising_not_starts_with_nocase: String
+  teamMissedFundraising_ends_with: String
+  teamMissedFundraising_ends_with_nocase: String
+  teamMissedFundraising_not_ends_with: String
+  teamMissedFundraising_not_ends_with_nocase: String
+  teamMissedFundraising_: ProjectFailedFundraisingEvent_filter
+  updated: String
+  updated_not: String
+  updated_gt: String
+  updated_lt: String
+  updated_gte: String
+  updated_lte: String
+  updated_in: [String!]
+  updated_not_in: [String!]
+  updated_contains: String
+  updated_contains_nocase: String
+  updated_not_contains: String
+  updated_not_contains_nocase: String
+  updated_starts_with: String
+  updated_starts_with_nocase: String
+  updated_not_starts_with: String
+  updated_not_starts_with_nocase: String
+  updated_ends_with: String
+  updated_ends_with_nocase: String
+  updated_not_ends_with: String
+  updated_not_ends_with_nocase: String
+  updated_: MetadataUpdatedEvent_filter
+  announced: String
+  announced_not: String
+  announced_gt: String
+  announced_lt: String
+  announced_gte: String
+  announced_lte: String
+  announced_in: [String!]
+  announced_not_in: [String!]
+  announced_contains: String
+  announced_contains_nocase: String
+  announced_not_contains: String
+  announced_not_contains_nocase: String
+  announced_starts_with: String
+  announced_starts_with_nocase: String
+  announced_not_starts_with: String
+  announced_not_starts_with_nocase: String
+  announced_ends_with: String
+  announced_ends_with_nocase: String
+  announced_not_ends_with: String
+  announced_not_ends_with_nocase: String
+  announced_: AnnouncementEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum EoaEventRecord_orderBy {
+  id
+  txHash
+  by
+  timestamp
+  created
+  pledged
+  withdrew
+  claimed
+  teamSucceededFundraising
+  teamMissedFundraising
+  updated
+  announced
+}
+
+type EoaRecord {
+  id: ID!
+  createdAt: BigInt!
+  updatedAt: BigInt!
+  pledgeCount: Int!
+  withdrawCount: Int!
+  pledgeBestowed: BigInt!
+  pledgeWithdrew: BigInt!
+  claimedTotal: BigInt!
+  createdCount: Int!
+  pledgedCount: Int!
+  withdrewCount: Int!
+  claimedCount: Int!
+  teamFailedCount: Int!
+  teamSucceededCount: Int!
+  updatesCount: Int!
+  announcementCount: Int!
+  pledges(skip: Int = 0, first: Int = 100, orderBy: PledgeRecord_orderBy, orderDirection: OrderDirection, where: PledgeRecord_filter): [PledgeRecord!]!
+  createdEvents(skip: Int = 0, first: Int = 100, orderBy: CommonGoodCreatedEvent_orderBy, orderDirection: OrderDirection, where: CommonGoodCreatedEvent_filter): [CommonGoodCreatedEvent!]!
+  pledgedEvents(skip: Int = 0, first: Int = 100, orderBy: PledgeEvent_orderBy, orderDirection: OrderDirection, where: PledgeEvent_filter): [PledgeEvent!]!
+  withdrewEvents(skip: Int = 0, first: Int = 100, orderBy: PledgeWithdrawnEvent_orderBy, orderDirection: OrderDirection, where: PledgeWithdrawnEvent_filter): [PledgeWithdrawnEvent!]!
+  claimedEvents(skip: Int = 0, first: Int = 100, orderBy: FundsClaimedEvent_orderBy, orderDirection: OrderDirection, where: FundsClaimedEvent_filter): [FundsClaimedEvent!]!
+  teamFailedEvents(skip: Int = 0, first: Int = 100, orderBy: ProjectFailedFundraisingEvent_orderBy, orderDirection: OrderDirection, where: ProjectFailedFundraisingEvent_filter): [ProjectFailedFundraisingEvent!]!
+  teamSucceededEvents(skip: Int = 0, first: Int = 100, orderBy: ProjectSucceededFundraisingEvent_orderBy, orderDirection: OrderDirection, where: ProjectSucceededFundraisingEvent_filter): [ProjectSucceededFundraisingEvent!]!
+  updatesEvents(skip: Int = 0, first: Int = 100, orderBy: MetadataUpdatedEvent_orderBy, orderDirection: OrderDirection, where: MetadataUpdatedEvent_filter): [MetadataUpdatedEvent!]!
+  announcementEvents: AnnouncementEvent
+  events(skip: Int = 0, first: Int = 100, orderBy: EoaEventRecord_orderBy, orderDirection: OrderDirection, where: EoaEventRecord_filter): [EoaEventRecord!]!
+}
+
+input EoaRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  createdAt: BigInt
+  createdAt_not: BigInt
+  createdAt_gt: BigInt
+  createdAt_lt: BigInt
+  createdAt_gte: BigInt
+  createdAt_lte: BigInt
+  createdAt_in: [BigInt!]
+  createdAt_not_in: [BigInt!]
+  updatedAt: BigInt
+  updatedAt_not: BigInt
+  updatedAt_gt: BigInt
+  updatedAt_lt: BigInt
+  updatedAt_gte: BigInt
+  updatedAt_lte: BigInt
+  updatedAt_in: [BigInt!]
+  updatedAt_not_in: [BigInt!]
+  pledgeCount: Int
+  pledgeCount_not: Int
+  pledgeCount_gt: Int
+  pledgeCount_lt: Int
+  pledgeCount_gte: Int
+  pledgeCount_lte: Int
+  pledgeCount_in: [Int!]
+  pledgeCount_not_in: [Int!]
+  withdrawCount: Int
+  withdrawCount_not: Int
+  withdrawCount_gt: Int
+  withdrawCount_lt: Int
+  withdrawCount_gte: Int
+  withdrawCount_lte: Int
+  withdrawCount_in: [Int!]
+  withdrawCount_not_in: [Int!]
+  pledgeBestowed: BigInt
+  pledgeBestowed_not: BigInt
+  pledgeBestowed_gt: BigInt
+  pledgeBestowed_lt: BigInt
+  pledgeBestowed_gte: BigInt
+  pledgeBestowed_lte: BigInt
+  pledgeBestowed_in: [BigInt!]
+  pledgeBestowed_not_in: [BigInt!]
+  pledgeWithdrew: BigInt
+  pledgeWithdrew_not: BigInt
+  pledgeWithdrew_gt: BigInt
+  pledgeWithdrew_lt: BigInt
+  pledgeWithdrew_gte: BigInt
+  pledgeWithdrew_lte: BigInt
+  pledgeWithdrew_in: [BigInt!]
+  pledgeWithdrew_not_in: [BigInt!]
+  claimedTotal: BigInt
+  claimedTotal_not: BigInt
+  claimedTotal_gt: BigInt
+  claimedTotal_lt: BigInt
+  claimedTotal_gte: BigInt
+  claimedTotal_lte: BigInt
+  claimedTotal_in: [BigInt!]
+  claimedTotal_not_in: [BigInt!]
+  createdCount: Int
+  createdCount_not: Int
+  createdCount_gt: Int
+  createdCount_lt: Int
+  createdCount_gte: Int
+  createdCount_lte: Int
+  createdCount_in: [Int!]
+  createdCount_not_in: [Int!]
+  pledgedCount: Int
+  pledgedCount_not: Int
+  pledgedCount_gt: Int
+  pledgedCount_lt: Int
+  pledgedCount_gte: Int
+  pledgedCount_lte: Int
+  pledgedCount_in: [Int!]
+  pledgedCount_not_in: [Int!]
+  withdrewCount: Int
+  withdrewCount_not: Int
+  withdrewCount_gt: Int
+  withdrewCount_lt: Int
+  withdrewCount_gte: Int
+  withdrewCount_lte: Int
+  withdrewCount_in: [Int!]
+  withdrewCount_not_in: [Int!]
+  claimedCount: Int
+  claimedCount_not: Int
+  claimedCount_gt: Int
+  claimedCount_lt: Int
+  claimedCount_gte: Int
+  claimedCount_lte: Int
+  claimedCount_in: [Int!]
+  claimedCount_not_in: [Int!]
+  teamFailedCount: Int
+  teamFailedCount_not: Int
+  teamFailedCount_gt: Int
+  teamFailedCount_lt: Int
+  teamFailedCount_gte: Int
+  teamFailedCount_lte: Int
+  teamFailedCount_in: [Int!]
+  teamFailedCount_not_in: [Int!]
+  teamSucceededCount: Int
+  teamSucceededCount_not: Int
+  teamSucceededCount_gt: Int
+  teamSucceededCount_lt: Int
+  teamSucceededCount_gte: Int
+  teamSucceededCount_lte: Int
+  teamSucceededCount_in: [Int!]
+  teamSucceededCount_not_in: [Int!]
+  updatesCount: Int
+  updatesCount_not: Int
+  updatesCount_gt: Int
+  updatesCount_lt: Int
+  updatesCount_gte: Int
+  updatesCount_lte: Int
+  updatesCount_in: [Int!]
+  updatesCount_not_in: [Int!]
+  announcementCount: Int
+  announcementCount_not: Int
+  announcementCount_gt: Int
+  announcementCount_lt: Int
+  announcementCount_gte: Int
+  announcementCount_lte: Int
+  announcementCount_in: [Int!]
+  announcementCount_not_in: [Int!]
+  pledges_: PledgeRecord_filter
+  createdEvents_: CommonGoodCreatedEvent_filter
+  pledgedEvents_: PledgeEvent_filter
+  withdrewEvents_: PledgeWithdrawnEvent_filter
+  claimedEvents_: FundsClaimedEvent_filter
+  teamFailedEvents_: ProjectFailedFundraisingEvent_filter
+  teamSucceededEvents_: ProjectSucceededFundraisingEvent_filter
+  updatesEvents_: MetadataUpdatedEvent_filter
+  announcementEvents_: AnnouncementEvent_filter
+  events_: EoaEventRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum EoaRecord_orderBy {
+  id
+  createdAt
+  updatedAt
+  pledgeCount
+  withdrawCount
+  pledgeBestowed
+  pledgeWithdrew
+  claimedTotal
+  createdCount
+  pledgedCount
+  withdrewCount
+  claimedCount
+  teamFailedCount
+  teamSucceededCount
+  updatesCount
+  announcementCount
+  pledges
+  createdEvents
+  pledgedEvents
+  withdrewEvents
+  claimedEvents
+  teamFailedEvents
+  teamSucceededEvents
+  updatesEvents
+  announcementEvents
+  events
+}
+
+type FactoryRecord {
+  id: ID!
+  count: BigInt!
+  commonGoods(skip: Int = 0, first: Int = 100, orderBy: CommonGoodRecord_orderBy, orderDirection: OrderDirection, where: CommonGoodRecord_filter): [CommonGoodRecord!]!
+}
+
+input FactoryRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  count: BigInt
+  count_not: BigInt
+  count_gt: BigInt
+  count_lt: BigInt
+  count_gte: BigInt
+  count_lte: BigInt
+  count_in: [BigInt!]
+  count_not_in: [BigInt!]
+  commonGoods_: CommonGoodRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum FactoryRecord_orderBy {
+  id
+  count
+  commonGoods
+}
+
+type FundsClaimedEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  by: EoaRecord!
+  amount: BigInt!
+}
+
+input FundsClaimedEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum FundsClaimedEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  by
+  amount
+}
+
+type MetadataUpdatedEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  CID: Bytes!
+  contents: String!
+  by: EoaRecord!
+}
+
+input MetadataUpdatedEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  CID: Bytes
+  CID_not: Bytes
+  CID_in: [Bytes!]
+  CID_not_in: [Bytes!]
+  CID_contains: Bytes
+  CID_not_contains: Bytes
+  contents: String
+  contents_not: String
+  contents_gt: String
+  contents_lt: String
+  contents_gte: String
+  contents_lte: String
+  contents_in: [String!]
+  contents_not_in: [String!]
+  contents_contains: String
+  contents_contains_nocase: String
+  contents_not_contains: String
+  contents_not_contains_nocase: String
+  contents_starts_with: String
+  contents_starts_with_nocase: String
+  contents_not_starts_with: String
+  contents_not_starts_with_nocase: String
+  contents_ends_with: String
+  contents_ends_with_nocase: String
+  contents_not_ends_with: String
+  contents_not_ends_with_nocase: String
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum MetadataUpdatedEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  CID
+  contents
+  by
+}
+
+type MilestoneRecord {
+  id: ID!
+  index: Int!
+  startDate: BigInt!
+  duration: BigInt!
+  minRaisedAmount: BigInt!
+  fundReleaseAmount: BigInt!
+  CID: Bytes!
+  commonGood: CommonGoodRecord!
+  status: MilestoneRecordStatus!
+}
+
+enum MilestoneRecordStatus {
+  UPCOMING
+  ACTIVE
+  FAILED
+  SUCCEEDED
+}
+
+input MilestoneRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  index: Int
+  index_not: Int
+  index_gt: Int
+  index_lt: Int
+  index_gte: Int
+  index_lte: Int
+  index_in: [Int!]
+  index_not_in: [Int!]
+  startDate: BigInt
+  startDate_not: BigInt
+  startDate_gt: BigInt
+  startDate_lt: BigInt
+  startDate_gte: BigInt
+  startDate_lte: BigInt
+  startDate_in: [BigInt!]
+  startDate_not_in: [BigInt!]
+  duration: BigInt
+  duration_not: BigInt
+  duration_gt: BigInt
+  duration_lt: BigInt
+  duration_gte: BigInt
+  duration_lte: BigInt
+  duration_in: [BigInt!]
+  duration_not_in: [BigInt!]
+  minRaisedAmount: BigInt
+  minRaisedAmount_not: BigInt
+  minRaisedAmount_gt: BigInt
+  minRaisedAmount_lt: BigInt
+  minRaisedAmount_gte: BigInt
+  minRaisedAmount_lte: BigInt
+  minRaisedAmount_in: [BigInt!]
+  minRaisedAmount_not_in: [BigInt!]
+  fundReleaseAmount: BigInt
+  fundReleaseAmount_not: BigInt
+  fundReleaseAmount_gt: BigInt
+  fundReleaseAmount_lt: BigInt
+  fundReleaseAmount_gte: BigInt
+  fundReleaseAmount_lte: BigInt
+  fundReleaseAmount_in: [BigInt!]
+  fundReleaseAmount_not_in: [BigInt!]
+  CID: Bytes
+  CID_not: Bytes
+  CID_in: [Bytes!]
+  CID_not_in: [Bytes!]
+  CID_contains: Bytes
+  CID_not_contains: Bytes
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  status: MilestoneRecordStatus
+  status_not: MilestoneRecordStatus
+  status_in: [MilestoneRecordStatus!]
+  status_not_in: [MilestoneRecordStatus!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum MilestoneRecord_orderBy {
+  id
+  index
+  startDate
+  duration
+  minRaisedAmount
+  fundReleaseAmount
+  CID
+  commonGood
+  status
+}
+
+type NextMilestoneStartedEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  current: MilestoneRecord!
+  commonGood: CommonGoodRecord!
+}
+
+input NextMilestoneStartedEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  current: String
+  current_not: String
+  current_gt: String
+  current_lt: String
+  current_gte: String
+  current_lte: String
+  current_in: [String!]
+  current_not_in: [String!]
+  current_contains: String
+  current_contains_nocase: String
+  current_not_contains: String
+  current_not_contains_nocase: String
+  current_starts_with: String
+  current_starts_with_nocase: String
+  current_not_starts_with: String
+  current_not_starts_with_nocase: String
+  current_ends_with: String
+  current_ends_with_nocase: String
+  current_not_ends_with: String
+  current_not_ends_with_nocase: String
+  current_: MilestoneRecord_filter
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum NextMilestoneStartedEvent_orderBy {
+  id
+  txHash
+  timestamp
+  current
+  commonGood
+}
+
+"""Defines the order direction, either ascending or descending"""
+enum OrderDirection {
+  asc
+  desc
+}
+
+type PledgeEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  pledge: PledgeRecord!
+  comment: String!
+  amount: BigInt!
+  by: EoaRecord!
+  pledgeBalance: BigInt!
+  pledgeRaised: BigInt!
+  pledgeWithdrawnAmount: BigInt!
+  pledgePledges: Int!
+  pledgeWithdrawCount: Int!
+  commonGoodRaised: BigInt!
+  commonGoodBalance: BigInt!
+  commonGoodWithdrawnAmount: BigInt!
+  commonGoodPledgerCount: Int!
+}
+
+type PledgeEventRecord {
+  id: ID!
+  txHash: Bytes!
+  pledge: PledgeRecord!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  pledged: PledgeEvent
+  withdrew: PledgeWithdrawnEvent
+}
+
+input PledgeEventRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  pledge: String
+  pledge_not: String
+  pledge_gt: String
+  pledge_lt: String
+  pledge_gte: String
+  pledge_lte: String
+  pledge_in: [String!]
+  pledge_not_in: [String!]
+  pledge_contains: String
+  pledge_contains_nocase: String
+  pledge_not_contains: String
+  pledge_not_contains_nocase: String
+  pledge_starts_with: String
+  pledge_starts_with_nocase: String
+  pledge_not_starts_with: String
+  pledge_not_starts_with_nocase: String
+  pledge_ends_with: String
+  pledge_ends_with_nocase: String
+  pledge_not_ends_with: String
+  pledge_not_ends_with_nocase: String
+  pledge_: PledgeRecord_filter
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  pledged: String
+  pledged_not: String
+  pledged_gt: String
+  pledged_lt: String
+  pledged_gte: String
+  pledged_lte: String
+  pledged_in: [String!]
+  pledged_not_in: [String!]
+  pledged_contains: String
+  pledged_contains_nocase: String
+  pledged_not_contains: String
+  pledged_not_contains_nocase: String
+  pledged_starts_with: String
+  pledged_starts_with_nocase: String
+  pledged_not_starts_with: String
+  pledged_not_starts_with_nocase: String
+  pledged_ends_with: String
+  pledged_ends_with_nocase: String
+  pledged_not_ends_with: String
+  pledged_not_ends_with_nocase: String
+  pledged_: PledgeEvent_filter
+  withdrew: String
+  withdrew_not: String
+  withdrew_gt: String
+  withdrew_lt: String
+  withdrew_gte: String
+  withdrew_lte: String
+  withdrew_in: [String!]
+  withdrew_not_in: [String!]
+  withdrew_contains: String
+  withdrew_contains_nocase: String
+  withdrew_not_contains: String
+  withdrew_not_contains_nocase: String
+  withdrew_starts_with: String
+  withdrew_starts_with_nocase: String
+  withdrew_not_starts_with: String
+  withdrew_not_starts_with_nocase: String
+  withdrew_ends_with: String
+  withdrew_ends_with_nocase: String
+  withdrew_not_ends_with: String
+  withdrew_not_ends_with_nocase: String
+  withdrew_: PledgeWithdrawnEvent_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PledgeEventRecord_orderBy {
+  id
+  txHash
+  pledge
+  timestamp
+  commonGood
+  pledged
+  withdrew
+}
+
+input PledgeEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  pledge: String
+  pledge_not: String
+  pledge_gt: String
+  pledge_lt: String
+  pledge_gte: String
+  pledge_lte: String
+  pledge_in: [String!]
+  pledge_not_in: [String!]
+  pledge_contains: String
+  pledge_contains_nocase: String
+  pledge_not_contains: String
+  pledge_not_contains_nocase: String
+  pledge_starts_with: String
+  pledge_starts_with_nocase: String
+  pledge_not_starts_with: String
+  pledge_not_starts_with_nocase: String
+  pledge_ends_with: String
+  pledge_ends_with_nocase: String
+  pledge_not_ends_with: String
+  pledge_not_ends_with_nocase: String
+  pledge_: PledgeRecord_filter
+  comment: String
+  comment_not: String
+  comment_gt: String
+  comment_lt: String
+  comment_gte: String
+  comment_lte: String
+  comment_in: [String!]
+  comment_not_in: [String!]
+  comment_contains: String
+  comment_contains_nocase: String
+  comment_not_contains: String
+  comment_not_contains_nocase: String
+  comment_starts_with: String
+  comment_starts_with_nocase: String
+  comment_not_starts_with: String
+  comment_not_starts_with_nocase: String
+  comment_ends_with: String
+  comment_ends_with_nocase: String
+  comment_not_ends_with: String
+  comment_not_ends_with_nocase: String
+  amount: BigInt
+  amount_not: BigInt
+  amount_gt: BigInt
+  amount_lt: BigInt
+  amount_gte: BigInt
+  amount_lte: BigInt
+  amount_in: [BigInt!]
+  amount_not_in: [BigInt!]
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  pledgeBalance: BigInt
+  pledgeBalance_not: BigInt
+  pledgeBalance_gt: BigInt
+  pledgeBalance_lt: BigInt
+  pledgeBalance_gte: BigInt
+  pledgeBalance_lte: BigInt
+  pledgeBalance_in: [BigInt!]
+  pledgeBalance_not_in: [BigInt!]
+  pledgeRaised: BigInt
+  pledgeRaised_not: BigInt
+  pledgeRaised_gt: BigInt
+  pledgeRaised_lt: BigInt
+  pledgeRaised_gte: BigInt
+  pledgeRaised_lte: BigInt
+  pledgeRaised_in: [BigInt!]
+  pledgeRaised_not_in: [BigInt!]
+  pledgeWithdrawnAmount: BigInt
+  pledgeWithdrawnAmount_not: BigInt
+  pledgeWithdrawnAmount_gt: BigInt
+  pledgeWithdrawnAmount_lt: BigInt
+  pledgeWithdrawnAmount_gte: BigInt
+  pledgeWithdrawnAmount_lte: BigInt
+  pledgeWithdrawnAmount_in: [BigInt!]
+  pledgeWithdrawnAmount_not_in: [BigInt!]
+  pledgePledges: Int
+  pledgePledges_not: Int
+  pledgePledges_gt: Int
+  pledgePledges_lt: Int
+  pledgePledges_gte: Int
+  pledgePledges_lte: Int
+  pledgePledges_in: [Int!]
+  pledgePledges_not_in: [Int!]
+  pledgeWithdrawCount: Int
+  pledgeWithdrawCount_not: Int
+  pledgeWithdrawCount_gt: Int
+  pledgeWithdrawCount_lt: Int
+  pledgeWithdrawCount_gte: Int
+  pledgeWithdrawCount_lte: Int
+  pledgeWithdrawCount_in: [Int!]
+  pledgeWithdrawCount_not_in: [Int!]
+  commonGoodRaised: BigInt
+  commonGoodRaised_not: BigInt
+  commonGoodRaised_gt: BigInt
+  commonGoodRaised_lt: BigInt
+  commonGoodRaised_gte: BigInt
+  commonGoodRaised_lte: BigInt
+  commonGoodRaised_in: [BigInt!]
+  commonGoodRaised_not_in: [BigInt!]
+  commonGoodBalance: BigInt
+  commonGoodBalance_not: BigInt
+  commonGoodBalance_gt: BigInt
+  commonGoodBalance_lt: BigInt
+  commonGoodBalance_gte: BigInt
+  commonGoodBalance_lte: BigInt
+  commonGoodBalance_in: [BigInt!]
+  commonGoodBalance_not_in: [BigInt!]
+  commonGoodWithdrawnAmount: BigInt
+  commonGoodWithdrawnAmount_not: BigInt
+  commonGoodWithdrawnAmount_gt: BigInt
+  commonGoodWithdrawnAmount_lt: BigInt
+  commonGoodWithdrawnAmount_gte: BigInt
+  commonGoodWithdrawnAmount_lte: BigInt
+  commonGoodWithdrawnAmount_in: [BigInt!]
+  commonGoodWithdrawnAmount_not_in: [BigInt!]
+  commonGoodPledgerCount: Int
+  commonGoodPledgerCount_not: Int
+  commonGoodPledgerCount_gt: Int
+  commonGoodPledgerCount_lt: Int
+  commonGoodPledgerCount_gte: Int
+  commonGoodPledgerCount_lte: Int
+  commonGoodPledgerCount_in: [Int!]
+  commonGoodPledgerCount_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PledgeEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  pledge
+  comment
+  amount
+  by
+  pledgeBalance
+  pledgeRaised
+  pledgeWithdrawnAmount
+  pledgePledges
+  pledgeWithdrawCount
+  commonGoodRaised
+  commonGoodBalance
+  commonGoodWithdrawnAmount
+  commonGoodPledgerCount
+}
+
+type PledgeRecord {
+  id: ID!
+  by: EoaRecord!
+  commonGood: CommonGoodRecord!
+  balance: BigInt!
+  raised: BigInt!
+  withdrawnAmount: BigInt!
+  pledges: Int!
+  withdrawCount: Int!
+  withdrawn: Boolean!
+  pledgeEvents(skip: Int = 0, first: Int = 100, orderBy: PledgeEvent_orderBy, orderDirection: OrderDirection, where: PledgeEvent_filter): [PledgeEvent!]!
+  withdrawEvent(skip: Int = 0, first: Int = 100, orderBy: PledgeWithdrawnEvent_orderBy, orderDirection: OrderDirection, where: PledgeWithdrawnEvent_filter): [PledgeWithdrawnEvent!]!
+  events(skip: Int = 0, first: Int = 100, orderBy: PledgeEventRecord_orderBy, orderDirection: OrderDirection, where: PledgeEventRecord_filter): [PledgeEventRecord!]!
+}
+
+input PledgeRecord_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  balance: BigInt
+  balance_not: BigInt
+  balance_gt: BigInt
+  balance_lt: BigInt
+  balance_gte: BigInt
+  balance_lte: BigInt
+  balance_in: [BigInt!]
+  balance_not_in: [BigInt!]
+  raised: BigInt
+  raised_not: BigInt
+  raised_gt: BigInt
+  raised_lt: BigInt
+  raised_gte: BigInt
+  raised_lte: BigInt
+  raised_in: [BigInt!]
+  raised_not_in: [BigInt!]
+  withdrawnAmount: BigInt
+  withdrawnAmount_not: BigInt
+  withdrawnAmount_gt: BigInt
+  withdrawnAmount_lt: BigInt
+  withdrawnAmount_gte: BigInt
+  withdrawnAmount_lte: BigInt
+  withdrawnAmount_in: [BigInt!]
+  withdrawnAmount_not_in: [BigInt!]
+  pledges: Int
+  pledges_not: Int
+  pledges_gt: Int
+  pledges_lt: Int
+  pledges_gte: Int
+  pledges_lte: Int
+  pledges_in: [Int!]
+  pledges_not_in: [Int!]
+  withdrawCount: Int
+  withdrawCount_not: Int
+  withdrawCount_gt: Int
+  withdrawCount_lt: Int
+  withdrawCount_gte: Int
+  withdrawCount_lte: Int
+  withdrawCount_in: [Int!]
+  withdrawCount_not_in: [Int!]
+  withdrawn: Boolean
+  withdrawn_not: Boolean
+  withdrawn_in: [Boolean!]
+  withdrawn_not_in: [Boolean!]
+  pledgeEvents_: PledgeEvent_filter
+  withdrawEvent_: PledgeWithdrawnEvent_filter
+  events_: PledgeEventRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PledgeRecord_orderBy {
+  id
+  by
+  commonGood
+  balance
+  raised
+  withdrawnAmount
+  pledges
+  withdrawCount
+  withdrawn
+  pledgeEvents
+  withdrawEvent
+  events
+}
+
+type PledgeWithdrawnEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  pledge: PledgeRecord!
+  amountWithdrawn: BigInt!
+  by: EoaRecord!
+  pledgeBalance: BigInt!
+  pledgeRaised: BigInt!
+  pledgeWithdrawnAmount: BigInt!
+  pledgePledges: Int!
+  pledgeWithdrawCount: Int!
+  commonGoodRaised: BigInt!
+  commonGoodBalance: BigInt!
+  commonGoodWithdrawnAmount: BigInt!
+  commonGoodPledgerCount: Int!
+}
+
+input PledgeWithdrawnEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  pledge: String
+  pledge_not: String
+  pledge_gt: String
+  pledge_lt: String
+  pledge_gte: String
+  pledge_lte: String
+  pledge_in: [String!]
+  pledge_not_in: [String!]
+  pledge_contains: String
+  pledge_contains_nocase: String
+  pledge_not_contains: String
+  pledge_not_contains_nocase: String
+  pledge_starts_with: String
+  pledge_starts_with_nocase: String
+  pledge_not_starts_with: String
+  pledge_not_starts_with_nocase: String
+  pledge_ends_with: String
+  pledge_ends_with_nocase: String
+  pledge_not_ends_with: String
+  pledge_not_ends_with_nocase: String
+  pledge_: PledgeRecord_filter
+  amountWithdrawn: BigInt
+  amountWithdrawn_not: BigInt
+  amountWithdrawn_gt: BigInt
+  amountWithdrawn_lt: BigInt
+  amountWithdrawn_gte: BigInt
+  amountWithdrawn_lte: BigInt
+  amountWithdrawn_in: [BigInt!]
+  amountWithdrawn_not_in: [BigInt!]
+  by: String
+  by_not: String
+  by_gt: String
+  by_lt: String
+  by_gte: String
+  by_lte: String
+  by_in: [String!]
+  by_not_in: [String!]
+  by_contains: String
+  by_contains_nocase: String
+  by_not_contains: String
+  by_not_contains_nocase: String
+  by_starts_with: String
+  by_starts_with_nocase: String
+  by_not_starts_with: String
+  by_not_starts_with_nocase: String
+  by_ends_with: String
+  by_ends_with_nocase: String
+  by_not_ends_with: String
+  by_not_ends_with_nocase: String
+  by_: EoaRecord_filter
+  pledgeBalance: BigInt
+  pledgeBalance_not: BigInt
+  pledgeBalance_gt: BigInt
+  pledgeBalance_lt: BigInt
+  pledgeBalance_gte: BigInt
+  pledgeBalance_lte: BigInt
+  pledgeBalance_in: [BigInt!]
+  pledgeBalance_not_in: [BigInt!]
+  pledgeRaised: BigInt
+  pledgeRaised_not: BigInt
+  pledgeRaised_gt: BigInt
+  pledgeRaised_lt: BigInt
+  pledgeRaised_gte: BigInt
+  pledgeRaised_lte: BigInt
+  pledgeRaised_in: [BigInt!]
+  pledgeRaised_not_in: [BigInt!]
+  pledgeWithdrawnAmount: BigInt
+  pledgeWithdrawnAmount_not: BigInt
+  pledgeWithdrawnAmount_gt: BigInt
+  pledgeWithdrawnAmount_lt: BigInt
+  pledgeWithdrawnAmount_gte: BigInt
+  pledgeWithdrawnAmount_lte: BigInt
+  pledgeWithdrawnAmount_in: [BigInt!]
+  pledgeWithdrawnAmount_not_in: [BigInt!]
+  pledgePledges: Int
+  pledgePledges_not: Int
+  pledgePledges_gt: Int
+  pledgePledges_lt: Int
+  pledgePledges_gte: Int
+  pledgePledges_lte: Int
+  pledgePledges_in: [Int!]
+  pledgePledges_not_in: [Int!]
+  pledgeWithdrawCount: Int
+  pledgeWithdrawCount_not: Int
+  pledgeWithdrawCount_gt: Int
+  pledgeWithdrawCount_lt: Int
+  pledgeWithdrawCount_gte: Int
+  pledgeWithdrawCount_lte: Int
+  pledgeWithdrawCount_in: [Int!]
+  pledgeWithdrawCount_not_in: [Int!]
+  commonGoodRaised: BigInt
+  commonGoodRaised_not: BigInt
+  commonGoodRaised_gt: BigInt
+  commonGoodRaised_lt: BigInt
+  commonGoodRaised_gte: BigInt
+  commonGoodRaised_lte: BigInt
+  commonGoodRaised_in: [BigInt!]
+  commonGoodRaised_not_in: [BigInt!]
+  commonGoodBalance: BigInt
+  commonGoodBalance_not: BigInt
+  commonGoodBalance_gt: BigInt
+  commonGoodBalance_lt: BigInt
+  commonGoodBalance_gte: BigInt
+  commonGoodBalance_lte: BigInt
+  commonGoodBalance_in: [BigInt!]
+  commonGoodBalance_not_in: [BigInt!]
+  commonGoodWithdrawnAmount: BigInt
+  commonGoodWithdrawnAmount_not: BigInt
+  commonGoodWithdrawnAmount_gt: BigInt
+  commonGoodWithdrawnAmount_lt: BigInt
+  commonGoodWithdrawnAmount_gte: BigInt
+  commonGoodWithdrawnAmount_lte: BigInt
+  commonGoodWithdrawnAmount_in: [BigInt!]
+  commonGoodWithdrawnAmount_not_in: [BigInt!]
+  commonGoodPledgerCount: Int
+  commonGoodPledgerCount_not: Int
+  commonGoodPledgerCount_gt: Int
+  commonGoodPledgerCount_lt: Int
+  commonGoodPledgerCount_gte: Int
+  commonGoodPledgerCount_lte: Int
+  commonGoodPledgerCount_in: [Int!]
+  commonGoodPledgerCount_not_in: [Int!]
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum PledgeWithdrawnEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  pledge
+  amountWithdrawn
+  by
+  pledgeBalance
+  pledgeRaised
+  pledgeWithdrawnAmount
+  pledgePledges
+  pledgeWithdrawCount
+  commonGoodRaised
+  commonGoodBalance
+  commonGoodWithdrawnAmount
+  commonGoodPledgerCount
+}
+
+type ProjectFailedFundraisingEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  fundsRaised: BigInt!
+  team: EoaRecord!
+  milestone: MilestoneRecord!
+}
+
+input ProjectFailedFundraisingEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  fundsRaised: BigInt
+  fundsRaised_not: BigInt
+  fundsRaised_gt: BigInt
+  fundsRaised_lt: BigInt
+  fundsRaised_gte: BigInt
+  fundsRaised_lte: BigInt
+  fundsRaised_in: [BigInt!]
+  fundsRaised_not_in: [BigInt!]
+  team: String
+  team_not: String
+  team_gt: String
+  team_lt: String
+  team_gte: String
+  team_lte: String
+  team_in: [String!]
+  team_not_in: [String!]
+  team_contains: String
+  team_contains_nocase: String
+  team_not_contains: String
+  team_not_contains_nocase: String
+  team_starts_with: String
+  team_starts_with_nocase: String
+  team_not_starts_with: String
+  team_not_starts_with_nocase: String
+  team_ends_with: String
+  team_ends_with_nocase: String
+  team_not_ends_with: String
+  team_not_ends_with_nocase: String
+  team_: EoaRecord_filter
+  milestone: String
+  milestone_not: String
+  milestone_gt: String
+  milestone_lt: String
+  milestone_gte: String
+  milestone_lte: String
+  milestone_in: [String!]
+  milestone_not_in: [String!]
+  milestone_contains: String
+  milestone_contains_nocase: String
+  milestone_not_contains: String
+  milestone_not_contains_nocase: String
+  milestone_starts_with: String
+  milestone_starts_with_nocase: String
+  milestone_not_starts_with: String
+  milestone_not_starts_with_nocase: String
+  milestone_ends_with: String
+  milestone_ends_with_nocase: String
+  milestone_not_ends_with: String
+  milestone_not_ends_with_nocase: String
+  milestone_: MilestoneRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProjectFailedFundraisingEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  fundsRaised
+  team
+  milestone
+}
+
+type ProjectSucceededFundraisingEvent {
+  id: ID!
+  txHash: Bytes!
+  timestamp: BigInt!
+  commonGood: CommonGoodRecord!
+  fundsRaised: BigInt!
+  team: EoaRecord!
+  milestone: MilestoneRecord!
+}
+
+input ProjectSucceededFundraisingEvent_filter {
+  id: ID
+  id_not: ID
+  id_gt: ID
+  id_lt: ID
+  id_gte: ID
+  id_lte: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  txHash: Bytes
+  txHash_not: Bytes
+  txHash_in: [Bytes!]
+  txHash_not_in: [Bytes!]
+  txHash_contains: Bytes
+  txHash_not_contains: Bytes
+  timestamp: BigInt
+  timestamp_not: BigInt
+  timestamp_gt: BigInt
+  timestamp_lt: BigInt
+  timestamp_gte: BigInt
+  timestamp_lte: BigInt
+  timestamp_in: [BigInt!]
+  timestamp_not_in: [BigInt!]
+  commonGood: String
+  commonGood_not: String
+  commonGood_gt: String
+  commonGood_lt: String
+  commonGood_gte: String
+  commonGood_lte: String
+  commonGood_in: [String!]
+  commonGood_not_in: [String!]
+  commonGood_contains: String
+  commonGood_contains_nocase: String
+  commonGood_not_contains: String
+  commonGood_not_contains_nocase: String
+  commonGood_starts_with: String
+  commonGood_starts_with_nocase: String
+  commonGood_not_starts_with: String
+  commonGood_not_starts_with_nocase: String
+  commonGood_ends_with: String
+  commonGood_ends_with_nocase: String
+  commonGood_not_ends_with: String
+  commonGood_not_ends_with_nocase: String
+  commonGood_: CommonGoodRecord_filter
+  fundsRaised: BigInt
+  fundsRaised_not: BigInt
+  fundsRaised_gt: BigInt
+  fundsRaised_lt: BigInt
+  fundsRaised_gte: BigInt
+  fundsRaised_lte: BigInt
+  fundsRaised_in: [BigInt!]
+  fundsRaised_not_in: [BigInt!]
+  team: String
+  team_not: String
+  team_gt: String
+  team_lt: String
+  team_gte: String
+  team_lte: String
+  team_in: [String!]
+  team_not_in: [String!]
+  team_contains: String
+  team_contains_nocase: String
+  team_not_contains: String
+  team_not_contains_nocase: String
+  team_starts_with: String
+  team_starts_with_nocase: String
+  team_not_starts_with: String
+  team_not_starts_with_nocase: String
+  team_ends_with: String
+  team_ends_with_nocase: String
+  team_not_ends_with: String
+  team_not_ends_with_nocase: String
+  team_: EoaRecord_filter
+  milestone: String
+  milestone_not: String
+  milestone_gt: String
+  milestone_lt: String
+  milestone_gte: String
+  milestone_lte: String
+  milestone_in: [String!]
+  milestone_not_in: [String!]
+  milestone_contains: String
+  milestone_contains_nocase: String
+  milestone_not_contains: String
+  milestone_not_contains_nocase: String
+  milestone_starts_with: String
+  milestone_starts_with_nocase: String
+  milestone_not_starts_with: String
+  milestone_not_starts_with_nocase: String
+  milestone_ends_with: String
+  milestone_ends_with_nocase: String
+  milestone_not_ends_with: String
+  milestone_not_ends_with_nocase: String
+  milestone_: MilestoneRecord_filter
+  """Filter for the block changed event."""
+  _change_block: BlockChangedFilter
+}
+
+enum ProjectSucceededFundraisingEvent_orderBy {
+  id
+  txHash
+  timestamp
+  commonGood
+  fundsRaised
+  team
+  milestone
+}
+
+type Query {
+  factoryRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): FactoryRecord
+  factoryRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: FactoryRecord_orderBy
+    orderDirection: OrderDirection
+    where: FactoryRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [FactoryRecord!]!
+  commonGoodCreatedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodCreatedEvent
+  commonGoodCreatedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodCreatedEvent_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodCreatedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodCreatedEvent!]!
+  pledgeEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeEvent
+  pledgeEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeEvent_orderBy
+    orderDirection: OrderDirection
+    where: PledgeEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeEvent!]!
+  pledgeWithdrawnEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeWithdrawnEvent
+  pledgeWithdrawnEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeWithdrawnEvent_orderBy
+    orderDirection: OrderDirection
+    where: PledgeWithdrawnEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeWithdrawnEvent!]!
+  metadataUpdatedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MetadataUpdatedEvent
+  metadataUpdatedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MetadataUpdatedEvent_orderBy
+    orderDirection: OrderDirection
+    where: MetadataUpdatedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MetadataUpdatedEvent!]!
+  announcementEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): AnnouncementEvent
+  announcementEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: AnnouncementEvent_orderBy
+    orderDirection: OrderDirection
+    where: AnnouncementEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [AnnouncementEvent!]!
+  nextMilestoneStartedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): NextMilestoneStartedEvent
+  nextMilestoneStartedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: NextMilestoneStartedEvent_orderBy
+    orderDirection: OrderDirection
+    where: NextMilestoneStartedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [NextMilestoneStartedEvent!]!
+  projectSucceededFundraisingEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectSucceededFundraisingEvent
+  projectSucceededFundraisingEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectSucceededFundraisingEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectSucceededFundraisingEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectSucceededFundraisingEvent!]!
+  projectFailedFundraisingEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectFailedFundraisingEvent
+  projectFailedFundraisingEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectFailedFundraisingEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectFailedFundraisingEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectFailedFundraisingEvent!]!
+  fundsClaimedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): FundsClaimedEvent
+  fundsClaimedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: FundsClaimedEvent_orderBy
+    orderDirection: OrderDirection
+    where: FundsClaimedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [FundsClaimedEvent!]!
+  commonGoodEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodEventRecord
+  commonGoodEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodEventRecord!]!
+  milestoneRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MilestoneRecord
+  milestoneRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MilestoneRecord_orderBy
+    orderDirection: OrderDirection
+    where: MilestoneRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MilestoneRecord!]!
+  commonGoodRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodRecord
+  commonGoodRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodRecord_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodRecord!]!
+  pledgeEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeEventRecord
+  pledgeEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: PledgeEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeEventRecord!]!
+  pledgeRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeRecord
+  pledgeRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeRecord_orderBy
+    orderDirection: OrderDirection
+    where: PledgeRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeRecord!]!
+  eoaEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): EoaEventRecord
+  eoaEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: EoaEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: EoaEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [EoaEventRecord!]!
+  eoaRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): EoaRecord
+  eoaRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: EoaRecord_orderBy
+    orderDirection: OrderDirection
+    where: EoaRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [EoaRecord!]!
+  """Access to subgraph metadata"""
+  _meta(block: Block_height): _Meta_
+}
+
+type Subscription {
+  factoryRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): FactoryRecord
+  factoryRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: FactoryRecord_orderBy
+    orderDirection: OrderDirection
+    where: FactoryRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [FactoryRecord!]!
+  commonGoodCreatedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodCreatedEvent
+  commonGoodCreatedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodCreatedEvent_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodCreatedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodCreatedEvent!]!
+  pledgeEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeEvent
+  pledgeEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeEvent_orderBy
+    orderDirection: OrderDirection
+    where: PledgeEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeEvent!]!
+  pledgeWithdrawnEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeWithdrawnEvent
+  pledgeWithdrawnEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeWithdrawnEvent_orderBy
+    orderDirection: OrderDirection
+    where: PledgeWithdrawnEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeWithdrawnEvent!]!
+  metadataUpdatedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MetadataUpdatedEvent
+  metadataUpdatedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MetadataUpdatedEvent_orderBy
+    orderDirection: OrderDirection
+    where: MetadataUpdatedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MetadataUpdatedEvent!]!
+  announcementEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): AnnouncementEvent
+  announcementEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: AnnouncementEvent_orderBy
+    orderDirection: OrderDirection
+    where: AnnouncementEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [AnnouncementEvent!]!
+  nextMilestoneStartedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): NextMilestoneStartedEvent
+  nextMilestoneStartedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: NextMilestoneStartedEvent_orderBy
+    orderDirection: OrderDirection
+    where: NextMilestoneStartedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [NextMilestoneStartedEvent!]!
+  projectSucceededFundraisingEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectSucceededFundraisingEvent
+  projectSucceededFundraisingEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectSucceededFundraisingEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectSucceededFundraisingEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectSucceededFundraisingEvent!]!
+  projectFailedFundraisingEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): ProjectFailedFundraisingEvent
+  projectFailedFundraisingEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: ProjectFailedFundraisingEvent_orderBy
+    orderDirection: OrderDirection
+    where: ProjectFailedFundraisingEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [ProjectFailedFundraisingEvent!]!
+  fundsClaimedEvent(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): FundsClaimedEvent
+  fundsClaimedEvents(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: FundsClaimedEvent_orderBy
+    orderDirection: OrderDirection
+    where: FundsClaimedEvent_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [FundsClaimedEvent!]!
+  commonGoodEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodEventRecord
+  commonGoodEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodEventRecord!]!
+  milestoneRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): MilestoneRecord
+  milestoneRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: MilestoneRecord_orderBy
+    orderDirection: OrderDirection
+    where: MilestoneRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [MilestoneRecord!]!
+  commonGoodRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): CommonGoodRecord
+  commonGoodRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: CommonGoodRecord_orderBy
+    orderDirection: OrderDirection
+    where: CommonGoodRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [CommonGoodRecord!]!
+  pledgeEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeEventRecord
+  pledgeEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: PledgeEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeEventRecord!]!
+  pledgeRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): PledgeRecord
+  pledgeRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: PledgeRecord_orderBy
+    orderDirection: OrderDirection
+    where: PledgeRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [PledgeRecord!]!
+  eoaEventRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): EoaEventRecord
+  eoaEventRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: EoaEventRecord_orderBy
+    orderDirection: OrderDirection
+    where: EoaEventRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [EoaEventRecord!]!
+  eoaRecord(
+    id: ID!
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): EoaRecord
+  eoaRecords(
+    skip: Int = 0
+    first: Int = 100
+    orderBy: EoaRecord_orderBy
+    orderDirection: OrderDirection
+    where: EoaRecord_filter
+    """
+    The block at which the query should be executed. Can either be a `{ hash: Bytes }` value containing a block hash, a `{ number: Int }` containing the block number, or a `{ number_gte: Int }` containing the minimum block number. In the case of `number_gte`, the query will be executed on the latest block only if the subgraph has progressed to or past the minimum block number. Defaults to the latest block when omitted.
+    """
+    block: Block_height
+    """
+    Set to `allow` to receive data even if the subgraph has skipped over errors while syncing.
+    """
+    subgraphError: _SubgraphErrorPolicy_! = deny
+  ): [EoaRecord!]!
+  """Access to subgraph metadata"""
+  _meta(block: Block_height): _Meta_
+}
+
+type _Block_ {
+  """The hash of the block"""
+  hash: Bytes
+  """The block number"""
+  number: Int!
+  """Timestamp of the block if available, format depends on the chain"""
+  timestamp: String
+}
+
+"""The type for the top-level _meta field"""
+type _Meta_ {
+  """
+  Information about a specific subgraph block. The hash of the block
+  will be null if the _meta field has a block constraint that asks for
+  a block number. It will be filled if the _meta field has no block constraint
+  and therefore asks for the latest  block
+  
+  """
+  block: _Block_!
+  """The deployment ID"""
+  deployment: String!
+  """If `true`, the subgraph encountered indexing errors at some past block"""
+  hasIndexingErrors: Boolean!
+}
+
+enum _SubgraphErrorPolicy_ {
+  """Data will be returned even if the subgraph has indexing errors"""
+  allow
+  """
+  If the subgraph has indexing errors, data will be omitted. The default.
+  """
+  deny
+}

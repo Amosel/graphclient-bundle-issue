@@ -1,0 +1,72 @@
+query CommonGoodPage($id: ID!, $commonGoodId: String!) {
+  commonGoodRecord(id: $id) {
+    id
+    contractAddress
+    claimedAmount
+    currentMilestoneStartDate
+    lastMilestoneEndDate
+    teamAddress
+    adminAddresses
+    initializerAddress
+    metadataCID
+    metadataContents
+    state
+    withdrawnPledgerCount
+    lastUpdateTime
+    raisedAmount
+    withdrawnAmount
+    balance
+    pledgerCount
+    createdAt
+    nextEvents {
+      id
+      txHash
+      current {
+        index
+      }
+    }
+    createdEvent {
+      by {
+        createdCount
+        id
+      }
+    }
+    milestones(orderBy: index, orderDirection: asc) {
+      id
+      index
+      startDate
+      duration
+      minRaisedAmount
+      fundReleaseAmount
+      CID
+      status
+    }
+  }
+  pledgeEventRecords(where: { commonGood: $commonGoodId }, orderBy: timestamp, orderDirection: desc) {
+    id
+    timestamp
+    pledged {
+      amount
+      comment
+      pledge {
+        raised
+        withdrawnAmount
+        withdrawn
+      }
+      by {
+        id
+      }
+    }
+    withdrew {
+      amountWithdrawn
+      pledge {
+        raised
+        withdrawnAmount
+        withdrawn
+      }
+      by {
+        id
+      }
+    }
+  }
+}

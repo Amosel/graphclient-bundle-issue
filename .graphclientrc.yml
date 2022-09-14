@@ -1,0 +1,11 @@
+sources:
+  - name: common-good
+    handler:
+      graphql:
+        endpoint: https://api.studio.thegraph.com/query/23484/common-good-goerli/0.006
+  - name: uniswap-v2
+    handler:
+      graphql:
+        endpoint: https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2
+documents:
+  - "./graphql/**/*.graphql"

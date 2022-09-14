@@ -1,0 +1,30 @@
+query getEoaRecord($id: ID!) {
+  eoaRecord(id: $id) {
+    withdrewCount
+    claimedCount
+    teamFailedCount
+    teamSucceededCount
+    updatesCount
+    createdAt
+    pledges(first: 1000) {
+      id
+      raised
+      balance
+      withdrawnAmount
+      withdrawCount
+      commonGood {
+        id
+      }
+      events {
+        timestamp
+        pledged {
+          amount
+          comment
+        }
+        withdrew {
+          amountWithdrawn
+        }
+      }
+    }
+  }
+}
